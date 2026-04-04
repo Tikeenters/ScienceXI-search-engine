@@ -5,3 +5,4 @@ langchain-google-genai
 langchain-community
 faiss-cpu
 langchain-text-splitters
+langchain-classic
