@@ -21,25 +21,34 @@ except:
 # 3. Background Setup: Read ALL PDFs automatically (Runs only once)
 @st.cache_resource
 def initialize_database():
-    # Find all files in the folder that end in .pdf
     pdf_files = glob.glob("*.pdf") 
     
     if len(pdf_files) == 0:
         st.error("Could not find any PDF files in the project folder!")
         return False
 
-    # Extract text from EVERY pdf found
     text = ""
     for pdf_path in pdf_files:
-        pdf_reader = PdfReader(pdf_path)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
+        try:
+            pdf_reader = PdfReader(pdf_path)
+            for page in pdf_reader.pages:
+                try:
+                    extracted = page.extract_text()
+                    if extracted:
+                        text += extracted
+                except Exception:
+                    continue # Skip broken pages
+        except Exception as e:
+            st.warning(f"Could not read {pdf_path}: {e}")
+            continue
         
-    # Chop all the combined text into chunks
+    if not text:
+        st.error("No text could be extracted from your PDFs.")
+        return False
+
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
     chunks = text_splitter.split_text(text)
     
-    # Create searchable database
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vector_store = FAISS.from_texts(chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
@@ -65,7 +74,7 @@ def get_conversational_chain():
 
 # 6. The User Interface (Only shows up if the PDFs were successfully read)
 if is_ready:
-    user_question = st.text_input("Ask a question about the Class 11 Science textbook:")
+    user_question = st.text_input("Ask a question about the Class 10 Science textbook:")
     if user_question:
         embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
         new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
