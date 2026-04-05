@@ -71,3 +71,4 @@ If you want to run this project locally:
 This is an educational project. Feel free to fork this repository and add features like multi-language support or support for other subjects!
 
 I am also going to add sources such as NCERT answer keys.
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/e4e291c8-7c97-48d4-a681-78b67deeaf69" />
