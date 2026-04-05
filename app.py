@@ -64,7 +64,7 @@ if st.sidebar.button("Load AI Brain"):
                 try:
                     # Explicit task_type keeps the API from rejecting the payload
                     embeddings = GoogleGenerativeAIEmbeddings(
-                        model="models/embedding-004",
+                        model="models/text-embedding-004",
                         task_type="retrieval_document"
                     )
                     vector_store = FAISS.from_texts(chunks, embedding=embeddings)
@@ -97,7 +97,7 @@ if st.session_state.is_ready:
         try:
             # We must use the exact same embedding configuration to read the database as we used to write it
             embeddings = GoogleGenerativeAIEmbeddings(
-                model="models/embedding-004",
+                model="models/text-embedding-004",
                 task_type="retrieval_document"
             )
             new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
