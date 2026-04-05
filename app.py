@@ -25,7 +25,7 @@ if "is_ready" not in st.session_state:
 
 # 3. SIDEBAR: The Chapter Sorter
 st.sidebar.title("📚 Study Material")
-st.sidebar.warning("⚠️ **Pro-Tip:** Google's free tier gets violently angry if you upload too much text at once. Select 5 chapters or fewer.")
+st.sidebar.warning("⚠️ Do not select more than 5 chapters. If you want answers choose Answers pdf")
 
 pdf_files = glob.glob("*.pdf")
 selected_chapters = st.sidebar.multiselect(
