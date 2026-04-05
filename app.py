@@ -64,7 +64,7 @@ if st.sidebar.button("Load AI Brain"):
                 try:
                     # Explicit task_type keeps the API from rejecting the payload
                     embeddings = GoogleGenerativeAIEmbeddings(
-                        model="models/embedding-001",
+                        model="models/embedding-004",
                         task_type="retrieval_document"
                     )
                     vector_store = FAISS.from_texts(chunks, embedding=embeddings)
