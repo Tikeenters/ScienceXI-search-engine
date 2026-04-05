@@ -69,6 +69,5 @@ If you want to run this project locally:
 🤝 Contributing
 
 This is an educational project. Feel free to fork this repository and add features like multi-language support or support for other subjects!
-Pro-Tip for your GitHub:
 
-Once you save this, your GitHub repository page will automatically display this formatted text below your file list. It makes your project look 10x more impressive to anyone who visits your link!
+I am also going to add sources such as NCERT answer keys.
