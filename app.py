@@ -97,7 +97,7 @@ if st.session_state.is_ready:
         try:
             # We must use the exact same embedding configuration to read the database as we used to write it
             embeddings = GoogleGenerativeAIEmbeddings(
-                model="models/embedding-001",
+                model="models/embedding-004",
                 task_type="retrieval_document"
             )
             new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
