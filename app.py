@@ -109,7 +109,7 @@ with col_left:
 
 # RIGHT MENU: The Easy Toggle
 with col_right:
-    is_easy_mode = st.toggle("👶 Easy Mode", value=False)
+    is_easy_mode = st.toggle("Easy Mode", value=False)
 
 # CENTER MENU: The Main Search Bar
 with col_center:
